@@ -48,8 +48,7 @@ function Mainpage_login() {
 
     const fetchAllJobs = async () => {
         try {
-            const apiUrl = process.env.BACKEND_URL || 'http://localhost:4000'; 
-            const response = await axios.get(`${apiUrl}/jobs`);
+            const response = await axios.get('http://localhost:4000/jobs');
             setJobs(response.data.data); // Ensure response.data.data is an array
         } catch (error) {
             console.error('Error fetching job details', error.response ? error.response.data : error.message);

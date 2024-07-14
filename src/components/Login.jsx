@@ -23,8 +23,7 @@ function Login() {
         const userData = {email,password};
 
         try{
-            const apiUrl = process.env.BACKEND_URL || 'http://localhost:4000'; 
-            const response = await axios.post(`${apiUrl}/users/login`,userData,{
+            const response = await axios.post(`http://localhost:4000/users/login`,userData,{
                 headers:{
                     'Content-Type': 'application/json'
                 }

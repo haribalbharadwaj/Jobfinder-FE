@@ -22,8 +22,8 @@ function Jobedit() {
     useEffect(() => {
         const fetchJobDetails = async () => {
             try {
-                const apiUrl = process.env.BACKEND_URL || 'http://localhost:4000'; 
-                const response = await axios.get(`${apiUrl}/jobs/${id}`);
+            
+                const response = await axios.get(`http://localhost:4000/jobs/${id}`);
                 const data = response.data;
                 setJobDetails({
                     companyName: data.data.companyName,
@@ -63,8 +63,7 @@ function Jobedit() {
             }
             console.log('Auth Token:', authToken);
             
-            const apiUrl = process.env.BACKEND_URL || 'http://localhost:4000'; 
-            const response =await axios.put(`${apiUrl}/updateJob/${id}`, {
+            const response =await axios.put(`http://localhost:4000/updateJob/${id}`, {
                 ...jobDetails,
                 skillsRequired: jobDetails.skillsRequired.split(',').map(skill => skill.trim())
             }, {
