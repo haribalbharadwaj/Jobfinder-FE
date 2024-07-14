@@ -9,7 +9,7 @@ import Nav1 from '../assets/nav1.png';
 import User from '../assets/userImage.png';
 
 function Navbarjob() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
