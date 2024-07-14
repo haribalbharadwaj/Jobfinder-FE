@@ -24,7 +24,8 @@ function Signup() {
         const userData = { name, email, mobile, password };
 
         try {
-            const response = await axios.post('http://localhost:4000/users/signup', userData, {
+            const apiUrl = process.env.BACKEND_URL || 'http://localhost:4000'; 
+            const response = await axios.post(`${apiUrl}/users/signup`, userData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }

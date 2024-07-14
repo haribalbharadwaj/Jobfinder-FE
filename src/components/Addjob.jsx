@@ -46,7 +46,8 @@ function Addjob() {
               setSuccess('');
               return;
             }
-            const response = await axios.post('http://localhost:4000/addJob',jobData,{
+            const apiUrl = process.env.BACKEND_URL || 'http://localhost:4000'; 
+            const response = await axios.post(`${apiUrl}/addJob`,jobData,{
               headers:{
                 'Content-Type':'application/json',
                 'Authorization': `Bearer ${token}`

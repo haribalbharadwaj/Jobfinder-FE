@@ -9,7 +9,8 @@ function Viewdetails() {
 
     const fetchJobDetails = async () => {
         try {
-            const response = await axios.get(`http://localhost:4000/jobs/${id}`);
+            const apiUrl = process.env.BACKEND_URL || 'http://localhost:4000'; 
+            const response = await axios.get(`${apiUrl}/jobs/${id}`);
             setJob(response.data.data);
         } catch (error) {
             console.error('Error fetching job details', error.response ? error.response.data : error.message);
