@@ -8,7 +8,7 @@ import Nav2 from '../assets/nav2.png';
 import Nav1 from '../assets/nav1.png';
 import User from '../assets/userImage.png';
 
-function Navbarjob() {
+function Navbarjob({isLoggedIn}) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
