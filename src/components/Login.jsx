@@ -23,6 +23,7 @@ function Login() {
         const userData = {email,password};
 
         try{
+            const token = localStorage.getItem('authToken');
             const response = await axios.post(`http://localhost:4000/users/login`,userData,{
                 headers:{
                     'Content-Type': 'application/json',
