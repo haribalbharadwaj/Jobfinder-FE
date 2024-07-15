@@ -67,6 +67,7 @@ function Addjob() {
             setAboutCompany('');
             setSkillsRequired('');
             setInformation('');
+            
 
           }catch(error){
             console.log('Error adding job',error.response ? error.response.data : error.message);

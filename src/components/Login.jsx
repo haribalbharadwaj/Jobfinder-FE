@@ -25,7 +25,8 @@ function Login() {
         try{
             const response = await axios.post(`http://localhost:4000/users/login`,userData,{
                 headers:{
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 }
             });
 
