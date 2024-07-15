@@ -11,13 +11,24 @@ import Addjob from './Addjob';
 
 
 function Mainpage() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    // Additional login logic
+};
+
+const handleLogout = () => {
+    setIsLoggedIn(false);
+    // Additional logout logic
+};
   return (
     <Router>
       <div>
         <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path='/' element={<Mainpage_login/>}/>
+            <Route path='/' element={<Mainpage_login isLoggedIn={isLoggedIn} />}/>
             <Route path="/jobedit/:id" element={<Jobedit />} /> 
             <Route path="/jobdetails/:id" element={<Viewdetails/>}/>
             <Route path="/addjob" element={<Addjob/>}/>
