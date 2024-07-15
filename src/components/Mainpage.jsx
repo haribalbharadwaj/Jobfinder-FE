@@ -17,7 +17,7 @@ function Mainpage() {
     <Router>
       <div>
         <Routes>
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn}/>} />
             <Route path="/signup" element={<Signup />} />
             <Route path='/' element={<Mainpage_login isLoggedIn={isLoggedIn} />}/>
             <Route path="/jobedit/:id" element={<Jobedit />} /> 
