@@ -6,8 +6,7 @@ import Navbarjob from './Navbarjob';
 import India from '../assets/india.png';
 import Employee from '../assets/employee.png';
 import Search from '../assets/search.png'
-import dotenv from 'dotenv';
-dotenv.config();
+
 
 const Skills = ({ skills }) => {
     const skillStyle = {
@@ -46,9 +45,6 @@ function Mainpage_login() {
     const [filteredJobs, setFilteredJobs] = useState([]);
     const [filterText, setFilterText] = useState('');
     const [appliedSkills, setAppliedSkills] = useState([]);
-    
-    console.log('BackendURL:',process.env.REACT_APP_JOBFINDER_BACKEND_URL);
-
     
 
     const fetchAllJobs = async () => {
