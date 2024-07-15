@@ -46,6 +46,9 @@ function Mainpage_login() {
     const [filterText, setFilterText] = useState('');
     const [appliedSkills, setAppliedSkills] = useState([]);
     
+    console.log('BackendURL:',process.env.REACT_APP_JOBFINDER_BACKEND_URL);
+
+    
 
     const fetchAllJobs = async () => {
         try {
