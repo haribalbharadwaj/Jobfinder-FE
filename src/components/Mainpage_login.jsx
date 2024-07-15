@@ -7,6 +7,8 @@ import India from '../assets/india.png';
 import Employee from '../assets/employee.png';
 import Search from '../assets/search.png'
 
+const BACKEND_URL = process.env.Jobfinder_BACKEND_URL;
+
 const Skills = ({ skills }) => {
     const skillStyle = {
         background: '#FFEEEE',
@@ -48,7 +50,7 @@ function Mainpage_login() {
 
     const fetchAllJobs = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/jobs');
+            const response = await axios.get(`${BACKEND_URL}/jobs`);
             setJobs(response.data.data); // Ensure response.data.data is an array
         } catch (error) {
             console.error('Error fetching job details', error.response ? error.response.data : error.message);

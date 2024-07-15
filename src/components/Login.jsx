@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import sideImage from '../assets/side_image.png';
 
-
+const BACKEND_URL = process.env.Jobfinder_BACKEND_URL;
 function Login() {
 
     const [email, setEmail] = useState('');
@@ -24,7 +24,7 @@ function Login() {
 
         try{
             const token = localStorage.getItem('authToken');
-            const response = await axios.post(`http://localhost:4000/users/login`,userData,{
+            const response = await axios.post(`${BACKEND_URL}/users/login`,userData,{
                 headers:{
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`

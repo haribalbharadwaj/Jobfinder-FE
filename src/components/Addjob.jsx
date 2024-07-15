@@ -3,6 +3,8 @@ import React from 'react';
 import axios from 'axios';
 import Wallpaper from '../assets/wallpaperAddjob.png';
 
+const BACKEND_URL = process.env.Jobfinder_BACKEND_URL;
+
 function Addjob() {
     const [companyName,setCompanyName]= useState('');
     const [logoUrl,setLogoUrl]= useState('');
@@ -47,7 +49,7 @@ function Addjob() {
               return;
             }
           
-            const response = await axios.post('http://localhost:4000/addJob',jobData,{
+            const response = await axios.post(`${BACKEND_URL}/addJob`,jobData,{
               headers:{
                 'Content-Type':'application/json',
                 'Authorization': `Bearer ${token}`

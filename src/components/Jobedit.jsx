@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
+const BACKEND_URL = process.env.Jobfinder_BACKEND_URL;
+
 function Jobedit() {
     const { id } = useParams();
     const [jobDetails, setJobDetails] = useState({
@@ -23,7 +25,7 @@ function Jobedit() {
         const fetchJobDetails = async () => {
             try {
             
-                const response = await axios.get(`http://localhost:4000/jobs/${id}`);
+                const response = await axios.get(`${BACKEND_URL}/jobs/${id}`);
                 const data = response.data;
                 setJobDetails({
                     companyName: data.data.companyName,
@@ -63,7 +65,7 @@ function Jobedit() {
             }
             console.log('Auth Token:', authToken);
             
-            const response =await axios.put(`http://localhost:4000/updateJob/${id}`, {
+            const response =await axios.put(`${BACKEND_URL}/updateJob/${id}`, {
                 ...jobDetails,
                 skillsRequired: jobDetails.skillsRequired.split(',').map(skill => skill.trim())
             }, {
