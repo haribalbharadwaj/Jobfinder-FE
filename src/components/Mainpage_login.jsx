@@ -49,7 +49,7 @@ function Mainpage_login() {
 
     const fetchAllJobs = async () => {
         try {
-            const response = await axios.get(`process.env.REACT_APP_JOBFINDER_BACKEND_URL/jobs`);
+            const response = await axios.get(`https://jobfinder-be.vercel.app/jobs`);
             console.log('Backend_URL:',process.env.REACT_APP_JOBFINDER_BACKEND_URL);
             console.log("Response data:", response.data);
             setJobs(response.data.data); // Ensure response.data.data is an array
