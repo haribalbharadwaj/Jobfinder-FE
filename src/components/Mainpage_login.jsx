@@ -54,7 +54,7 @@ function Mainpage_login() {
         try {
             const backendUrl = process.env.REACT_APP_JOBFINDER_BACKEND_URL;
             console.log("Backend URL:", backendUrl); // Log the backend URL
-            const response = await axios.get(`${backendUrl}/jobs`);
+            const response = await axios.get(`backendUrl/jobs`);
             console.log("Response data:", response.data); // Log the response data
             setJobs(response.data.data); // Ensure response.data.data is an array
         } catch (error) {
