@@ -47,8 +47,13 @@ function Addjob() {
               setSuccess('');
               return;
             }
+
+            const backendUrl = process.env.REACT_APP_JOBFINDER_BACKEND_URL;
+            if (!backendUrl) {
+                throw new Error('Backend URL is not defined');
+            }
           
-            const response = await axios.post('process.env.Jobfinder_BACKEND_URL/addJob',jobData,{
+            const response = await axios.post(`${backendUrl}/job/addJob`,jobData,{
               headers:{
                 'Content-Type':'application/json',
                 'Authorization': `Bearer ${token}`
