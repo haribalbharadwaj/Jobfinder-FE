@@ -3,8 +3,6 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const BACKEND_URL = process.env.Jobfinder_BACKEND_URL;
-
 
 function Viewdetails() {
     const { id } = useParams();
@@ -12,7 +10,7 @@ function Viewdetails() {
 
     const fetchJobDetails = async () => {
         try {
-            const response = await axios.get(`${BACKEND_URL}/jobs/${id}`);
+            const response = await axios.get('process.env.Jobfinder_BACKEND_URL/jobs/${id}');
             setJob(response.data.data);
         } catch (error) {
             console.error('Error fetching job details', error.response ? error.response.data : error.message);

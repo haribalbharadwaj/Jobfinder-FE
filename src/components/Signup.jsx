@@ -3,7 +3,6 @@ import axios from 'axios';
 import sideImage from '../assets/side_image.png';
 import { useNavigate } from 'react-router-dom';
 
-const BACKEND_URL = process.env.Jobfinder_BACKEND_URL;
 
 
 function Signup() {
@@ -27,7 +26,7 @@ function Signup() {
         const userData = { name, email, mobile, password };
 
         try {
-            const response = await axios.post(`${BACKEND_URL}/users/signup`, userData, {
+            const response = await axios.post('process.env.Jobfinder_BACKEND_URL/users/signup', userData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
