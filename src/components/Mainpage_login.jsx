@@ -49,14 +49,15 @@ function Mainpage_login() {
 
     const fetchAllJobs = async () => {
         try {
-            const response = await axios.get(`https://jobfinder-be.vercel.app/jobs`);
-            console.log('Backend_URL:',process.env.REACT_APP_JOBFINDER_BACKEND_URL);
-            console.log("Response data:", response.data);
+            const backendUrl = process.env.REACT_APP_JOBFINDER_BACKEND_URL;
+            console.log("Backend URL:", backendUrl); // Log the backend URL
+            const response = await axios.get(`${backendUrl}/jobs`);
+            console.log("Response data:", response.data); // Log the response data
             setJobs(response.data.data); // Ensure response.data.data is an array
         } catch (error) {
             console.error('Error fetching job details', error.response ? error.response.data : error.message);
         }
-    };
+    }
 
     useEffect(() => {
         fetchAllJobs();
