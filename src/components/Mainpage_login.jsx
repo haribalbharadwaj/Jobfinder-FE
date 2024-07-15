@@ -41,7 +41,7 @@ const Skills = ({ skills }) => {
 function Mainpage_login() {
     const [showAddJob, setShowAddJob] = useState(false);
     const [jobs, setJobs] = useState([]);
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState();
     const [filteredJobs, setFilteredJobs] = useState([]);
     const [filterText, setFilterText] = useState('');
     const [appliedSkills, setAppliedSkills] = useState([]);
@@ -168,8 +168,6 @@ function Mainpage_login() {
                     textAlign:'center',color:'#FFFFFF'
                  }}
                 >+ Add Job</button>
-                    
-
                 ):(
                     <button onClick={handleApplySkill}
                 style={{
