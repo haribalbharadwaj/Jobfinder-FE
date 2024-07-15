@@ -41,7 +41,6 @@ const Skills = ({ skills }) => {
 function Mainpage_login() {
     const [showAddJob, setShowAddJob] = useState(false);
     const [jobs, setJobs] = useState([]);
-    const [isLoggedIn, setIsLoggedIn] = useState();
     const [filteredJobs, setFilteredJobs] = useState([]);
     const [filterText, setFilterText] = useState('');
     const [appliedSkills, setAppliedSkills] = useState([]);
@@ -117,7 +116,7 @@ function Mainpage_login() {
 
     return (
         <div style={{ width: '1512px', height: '982px', top: '-630px', left: '-2449px' }}>
-            <Navbarjob />
+            <Navbarjob isLoggedIn={isLoggedIn}/>
             {showAddJob && <Addjob setAddedJob={(newJob) => setJobs([...jobs, newJob])} />}
             
             <div 
