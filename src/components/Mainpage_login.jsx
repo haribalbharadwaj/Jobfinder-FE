@@ -41,11 +41,16 @@ const Skills = ({ skills }) => {
 function Mainpage_login() {
     const [showAddJob, setShowAddJob] = useState(false);
     const [jobs, setJobs] = useState([]);
-    const [isLoggedIn, setIsLoggedIn] = useState();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [filteredJobs, setFilteredJobs] = useState([]);
     const [filterText, setFilterText] = useState('');
     const [appliedSkills, setAppliedSkills] = useState([]);
-    
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token);
+    }, []);
+
 
     const fetchAllJobs = async () => {
         try {
