@@ -85,12 +85,7 @@ function Mainpage_login() {
         setFilteredJobs(filtered);
     }, [filterText, appliedSkills, jobs]);
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        sessionStorage.clear();
-        setIsLoggedIn(false);
-    };
-
+    
     const handleAddJob = ()=>{
         window.location.href = '/addjob';
     }
