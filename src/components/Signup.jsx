@@ -26,7 +26,11 @@ function Signup() {
         const userData = { name, email, mobile, password };
 
         try {
-            const response = await axios.post('process.env.Jobfinder_BACKEND_URL/users/signup', userData, {
+            const backendUrl = process.env.REACT_APP_JOBFINDER_BACKEND_URL;
+                if (!backendUrl) {
+                    throw new Error('Backend URL is not defined');
+                }
+            const response = await axios.post(`${backendUrl}/user/users/signup`, userData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }

@@ -23,8 +23,11 @@ function Jobedit() {
     useEffect(() => {
         const fetchJobDetails = async () => {
             try {
-            
-                const response = await axios.get(`process.env.Jobfinder_BACKEND_URL/jobs/${id}`);
+                const backendUrl = process.env.REACT_APP_JOBFINDER_BACKEND_URL;
+                if (!backendUrl) {
+                    throw new Error('Backend URL is not defined');
+                }
+                const response = await axios.get(`${backendUrl}/job/jobs/${id}`);
                 const data = response.data;
                 setJobDetails({
                     companyName: data.data.companyName,
@@ -63,8 +66,13 @@ function Jobedit() {
                 return;
             }
             console.log('Auth Token:', authToken);
-            
-            const response =await axios.put(`process.env.Jobfinder_BACKEND_URL/updateJob/${id}`, {
+
+            const backendUrl = process.env.REACT_APP_JOBFINDER_BACKEND_URL;
+                if (!backendUrl) {
+                    throw new Error('Backend URL is not defined');
+                }
+
+            const response =await axios.put(`${backendUrl}/job/updateJob/${id}`, {
                 ...jobDetails,
                 skillsRequired: jobDetails.skillsRequired.split(',').map(skill => skill.trim())
             }, {

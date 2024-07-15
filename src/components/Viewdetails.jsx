@@ -10,7 +10,11 @@ function Viewdetails() {
 
     const fetchJobDetails = async () => {
         try {
-            const response = await axios.get('process.env.Jobfinder_BACKEND_URL/jobs/${id}');
+            const backendUrl = process.env.REACT_APP_JOBFINDER_BACKEND_URL;
+                if (!backendUrl) {
+                    throw new Error('Backend URL is not defined');
+                }
+            const response = await axios.get(`${backendUrl}/job/jobs/${id}`);
             setJob(response.data.data);
         } catch (error) {
             console.error('Error fetching job details', error.response ? error.response.data : error.message);

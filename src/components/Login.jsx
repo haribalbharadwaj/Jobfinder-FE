@@ -22,8 +22,12 @@ function Login() {
         const userData = {email,password};
 
         try{
+            const backendUrl = process.env.REACT_APP_JOBFINDER_BACKEND_URL;
+            if (!backendUrl) {
+                throw new Error('Backend URL is not defined');
+            }
             const token = localStorage.getItem('authToken');
-            const response = await axios.post('process.env.Jobfinder_BACKEND_URL/users/login',userData,{
+            const response = await axios.post(`${backendUrl}/user/users/login`,userData,{
                 headers:{
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
