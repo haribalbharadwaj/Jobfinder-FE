@@ -41,16 +41,10 @@ const Skills = ({ skills }) => {
 function Mainpage_login() {
     const [showAddJob, setShowAddJob] = useState(false);
     const [jobs, setJobs] = useState([]);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState();
     const [filteredJobs, setFilteredJobs] = useState([]);
     const [filterText, setFilterText] = useState('');
     const [appliedSkills, setAppliedSkills] = useState([]);
-
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        setIsLoggedIn(!!token);
-    }, []);
-
 
     const fetchAllJobs = async () => {
         try {
@@ -96,14 +90,6 @@ function Mainpage_login() {
         localStorage.removeItem('token');
         sessionStorage.clear();
         setIsLoggedIn(false);
-    };
-
-    const handleLogin = () => {
-        window.location.href = '/login';
-    };
-
-    const handleRegister = () => {
-        window.location.href = '/signup';
     };
 
     const handleAddJob = ()=>{
