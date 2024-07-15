@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Signup from './Signup';
 import Login from './Login';
 import Notfound from './Notfound';
-import Home from './Home';
 import Mainpage_login from './Mainpage_login';
 import Jobedit from './Jobedit';
 import Viewdetails from './Viewdetails';
@@ -13,15 +12,7 @@ import Addjob from './Addjob';
 function Mainpage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-    // Additional login logic
-};
-
-const handleLogout = () => {
-    setIsLoggedIn(false);
-    // Additional logout logic
-};
+  
   return (
     <Router>
       <div>
