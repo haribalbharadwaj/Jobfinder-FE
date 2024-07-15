@@ -5,7 +5,8 @@ import Addjob from './Addjob';
 import Navbarjob from './Navbarjob';
 import India from '../assets/india.png';
 import Employee from '../assets/employee.png';
-import Search from '../assets/search.png';
+import Search from '../assets/search.png'
+
 
 const Skills = ({ skills }) => {
     const skillStyle = {
@@ -44,10 +45,11 @@ function Mainpage_login() {
     const [filteredJobs, setFilteredJobs] = useState([]);
     const [filterText, setFilterText] = useState('');
     const [appliedSkills, setAppliedSkills] = useState([]);
+    
 
     const fetchAllJobs = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_JOBFINDER_BACKEND_URL}/jobs`);
+            const response = await axios.get(`${process.env.Jobfinder_BACKEND_URL}/jobs`);
             setJobs(response.data.data); // Ensure response.data.data is an array
         } catch (error) {
             console.error('Error fetching job details', error.response ? error.response.data : error.message);
@@ -94,9 +96,9 @@ function Mainpage_login() {
         window.location.href = '/signup';
     };
 
-    const handleAddJob = () => {
+    const handleAddJob = ()=>{
         window.location.href = '/addjob';
-    };
+    }
 
     const handleFilterChange = (e) => {
         setFilterText(e.target.value);
@@ -202,70 +204,80 @@ function Mainpage_login() {
                 {filteredJobs.length > 0 ? (
                     filteredJobs.map(job => (
                         <div key={job._id} style={{ position: 'relative', marginBottom: '20px', padding: '10px', border: '1px solid #ccc', borderRadius: '10px', height: '136px', zIndex: '1',
-                            boxShadow:'0px 0px 22px 4px #FF202040',
-                            background:'#FFFFFF'
-                        }}>
-                            <div style={{ position: 'absolute', width: '287px', height: '76px', left: '60px', top: '20px', borderRadius: '0px', fontFamily: 'DM Sans', fontStyle: 'normal', fontWeight: 'bold', fontSize: '30px', lineHeight: '39px', color: '#212427' }}>
+                            boxShadow:'0px 0px 22px 2px #FF202040'
+
+                         }}>
+                            <p style={{
+                                left: '105.14px', fontFamily: 'Roboto, sans-serif', fontSize: '19px', fontWeight: '500',
+                                marginBottom: '5px', position: 'absolute', color: '#000000', top: '23px'
+                            }}>
                                 {job.jobPosition}
-                            </div>
-                            <img
-                                src={Employee}
-                                style={{
-                                    width: '28px', height: '28px', top: '20px', left: '899px', gap: '10px', opacity: '0px', position: 'absolute', zIndex: '0'
-                                }}
-                            />
-                            <div style={{ position: 'absolute', width: '179px', height: '26px', left: '938px', top: '24px', borderRadius: '0px', fontFamily: 'DM Sans', fontStyle: 'normal', fontWeight: '500', fontSize: '22px', lineHeight: '23px', color: '#5B5B5B' }}>
-                                {job.companyName}
-                            </div>
-                            <div style={{ position: 'absolute', width: '225px', height: '26px', left: '892px', top: '67px', borderRadius: '0px', fontFamily: 'DM Sans', fontStyle: 'normal', fontWeight: '500', fontSize: '22px', lineHeight: '23px', color: '#5B5B5B' }}>
-                                {job.salary}
-                            </div>
-                            <img
-                                src={India}
-                                style={{
-                                    width: '20px', height: '20px', top: '72px', left: '861px', gap: '10px', opacity: '0px', position: 'absolute', zIndex: '0'
-                                }}
-                            />
-                            <div style={{ position: 'absolute', width: '150px', height: '26px', left: '938px', top: '72px', borderRadius: '0px', fontFamily: 'DM Sans', fontStyle: 'normal', fontWeight: '500', fontSize: '22px', lineHeight: '23px', color: '#5B5B5B' }}>
+                            </p>
+                            <img src={job.logoUrl} alt="Company Logo" style={{
+                                width: '55.32px', height: '55px', borderRadius: '12px', left: '26px', top: '23px', position: 'absolute',
+                                display: 'block', marginBottom: '5px'
+                            }} />
+                            <p style={{
+                                fontFamily: 'Roboto', fontSize: '18px', fontWeight: '500', top: '59.88px', left: '228px',
+                                color: '#9C9C9C', marginBottom: '5px', position: 'absolute'
+                            }}>
+                                ₹ {job.salary}
+                            </p>
+                            <p style={{
+                                fontFamily: 'Roboto', fontSize: '18px', fontWeight: '500', top: '59.88px',
+                                color: '#9C9C9C', marginBottom: '5px', left: '370px', position: 'absolute'
+                            }}>
                                 {job.location}
+                            </p>
+
+                            <p style={{
+                                fontFamily: 'Roboto, sans-serif', fontSize: '15px', fontWeight: '500',
+                                color: '#ED5353', marginBottom: '5px', left: '180px', top: '100px', position: 'absolute'
+                            }}>
+                                {job.jobType}
+                            </p>
+
+                            <p style={{
+                                fontFamily: 'Roboto, sans-serif', fontSize: '15px', fontWeight: '500',
+                                color: '#ED5353', marginBottom: '5px', top: '100px', position: 'absolute', left: '125.14px'
+                            }}>
+                                {job.jobMode}
+                            </p>
+                            <div style={{ position: 'absolute', top: '29px', left: '635px' }}>
+                                <Skills skills={job.skillsRequired} />
                             </div>
-                            <Skills skills={job.skillsRequired} />
+                            <img
+                            src={India}
+                            style={{width:'33.04px',height:'33.04px',top:'75px',left:'322.58px',gap:'0px',
+                                opacity:'0px',position:'absolute'
+                                }}
+                            />
+                            <div>
+                                <p
+                                style={{
+                                    width:'57px',height:'16px',top:'60.81px',left:'139.43px',
+                                gap:'0px',opacity:'0px',color:'#919191',position:'absolute'
+
+                                }}
+                                >11-50</p>
+                                <img
+                                style={{width:'16.69px',height:'14.83px',top:'80px',left:'125.14px',
+                                    gap:'0px',opacity:'0px',color:'#919191',position:'absolute'
+    }}
+                            src={Employee}
+                            /></div>  
+                            {isLoggedIn && (
+                                <>
+                                    <button onClick={() => window.location.href = `/jobdetails/${job._id}`} style={{
+                                        marginRight: '10px', backgroundColor: '#ED5353', color: '#fff', border: 'none', borderRadius: '5px',
+                                        top: '82px', left: '909px', position: 'absolute'
+                                    }}>View Details</button>
+                                </>
+                            )}
                         </div>
                     ))
                 ) : (
-                    <div>No jobs found</div>
-                )}
-            </div>
-            <div>
-                {!isLoggedIn && (
-                    <>
-                        <button onClick={handleLogin}
-                            style={{
-                                width: '150px', height: '50px', top: '160px', left: '1200px', borderRadius: '5px', position: 'absolute', background: '#ED5353',
-                                fontFamily: 'DM Sans, sans-serif', fontSize: '16px', fontWeight: '500', color: '#FFFFFF', zIndex: '200'
-                            }}
-                        >
-                            Login
-                        </button>
-                        <button onClick={handleRegister}
-                            style={{
-                                width: '150px', height: '50px', top: '220px', left: '1200px', borderRadius: '5px', position: 'absolute', background: '#ED5353',
-                                fontFamily: 'DM Sans, sans-serif', fontSize: '16px', fontWeight: '500', color: '#FFFFFF', zIndex: '200'
-                            }}
-                        >
-                            Register
-                        </button>
-                    </>
-                )}
-                {isLoggedIn && (
-                    <button onClick={handleLogout}
-                        style={{
-                            width: '150px', height: '50px', top: '160px', left: '1200px', borderRadius: '5px', position: 'absolute', background: '#ED5353',
-                            fontFamily: 'DM Sans, sans-serif', fontSize: '16px', fontWeight: '500', color: '#FFFFFF', zIndex: '200'
-                        }}
-                    >
-                        Logout
-                    </button>
+                    <p>No jobs available</p>
                 )}
             </div>
         </div>
