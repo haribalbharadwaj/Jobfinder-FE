@@ -6,7 +6,8 @@ import Navbarjob from './Navbarjob';
 import India from '../assets/india.png';
 import Employee from '../assets/employee.png';
 import Search from '../assets/search.png'
-
+import dotenv from 'dotenv';
+dotenv.config();
 
 const Skills = ({ skills }) => {
     const skillStyle = {
