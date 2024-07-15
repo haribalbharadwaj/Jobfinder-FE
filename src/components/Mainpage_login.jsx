@@ -50,8 +50,10 @@ function Mainpage_login() {
     const fetchAllJobs = async () => {
         try {
             const backendUrl = process.env.REACT_APP_JOBFINDER_BACKEND_URL;
-            console.log("Backend URL:", backendUrl); // Log the backend URL
-            const response = await axios.get(`${backendUrl}/jobs`);
+            if (!backendUrl) {
+                throw new Error('Backend URL is not defined');
+            }
+            const response = await axios.get(`${backendUrl}/job/jobs`);
             console.log("Response data:", response.data); // Log the response data
             setJobs(response.data.data); // Ensure response.data.data is an array
         } catch (error) {
