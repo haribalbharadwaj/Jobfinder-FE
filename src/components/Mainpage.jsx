@@ -12,7 +12,13 @@ import Addjob from './Addjob';
 
 function Mainpage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-<></>
+
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
   
   return (
     <Router>
