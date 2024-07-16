@@ -9,8 +9,7 @@ import Nav1 from '../assets/nav1.png';
 import User from '../assets/userImage.png';
 
 function Navbarjob({isLoggedIn}) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  
   useEffect(() => {
     const token = localStorage.getItem('authToken');
     if (token) {
