@@ -38,7 +38,7 @@ const Skills = ({ skills }) => {
     );
 };
 
-function Mainpage_login() {
+function Mainpage_login({isLoggedIn}) {
     const [showAddJob, setShowAddJob] = useState(false);
     const [jobs, setJobs] = useState([]);
     const [filteredJobs, setFilteredJobs] = useState([]);
