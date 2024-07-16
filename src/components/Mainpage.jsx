@@ -11,7 +11,7 @@ import Addjob from './Addjob';
 
 function Mainpage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+<></>
   
   return (
     <Router>
